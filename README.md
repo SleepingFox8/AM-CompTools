@@ -4,7 +4,7 @@ This library contains functions for computing things that may be useful when wri
 
 ## How to use
 
-You can add this library to your repository as a git submodule by using the command ``git submodule add https://github.com/SleepingFox8/AM-CompTools``. This will import the latest version of this repository into your github rebository as a subdirectory. 
+You can add this library to your repository as a git submodule by using the command ``git submodule add https://github.com/SleepingFox8/AM-CompTools``. This will import the latest version of this repository into your github repository as a subdirectory. 
 
 From there you can import these libraries to your own ``.lua`` scripts by importing them via:
 
