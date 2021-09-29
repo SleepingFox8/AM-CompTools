@@ -7,6 +7,10 @@
             GLBL = {}
         end
 
+    --initialize SCRIPT table
+    --Stores global variables for just this script
+        local SCRIPT = {}
+
 --function declarations
     -- thread related
         function compTools.anotherInstanceOfThisScriptIsRunning()
@@ -384,6 +388,35 @@
 
             table.insert(FUNC.t, FUNC.field)
             if FUNC.s == "" then return FUNC.t end
+        end
+    end
+
+    -- initialize timer tables
+        SCRIPT.timerStartTime = {}
+        SCRIPT.timerDuration = {}
+
+    function compTools.setTimer(timerName, ms)
+        --function initialization
+            --initialize function table
+                local FUNC = {}
+            --store arguments in locally scoped table for scope safety
+                FUNC.timerName, FUNC.ms = timerName, ms
+
+        SCRIPT.timerStartTime[FUNC.timerName] = os.time()
+        SCRIPT.timerDuration[FUNC.timerName] = ms
+    end
+
+    function compTools.haveTime(timerName)
+        --function initialization
+            --initialize function table
+                local FUNC = {}
+            --store arguments in locally scoped table for scope safety
+                FUNC.timerName = timerName
+
+        if os.difftime(os.time(),SCRIPT.timerStartTime[FUNC.timerName]) < (SCRIPT.timerDuration[FUNC.timerName] / 1000) then
+            return true
+        else
+            return false
         end
     end
 
